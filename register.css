@@ -1,79 +1,62 @@
-@@ -1,43 +1,43 @@
-let loginForm = document.getElementById("loginForm");
-let apiUrl =  "http://localhost:3000";
-if(location.href.indexOf("netlify") >= 0 ){
-    apiUrl = "https://netflix-cp.herokuapp.com";
-let loginForm = document.getElementById('loginForm')
-let apiUrl = 'http://localhost:3000'
-if (location.href.indexOf('netlify') >= 0) {
-  apiUrl = 'https://netflix-cp.herokuapp.com'
+@@ -1,37 +1,37 @@
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-const queryString = location.search;
-const urlParams = new URLSearchParams(queryString);
-const existingEmail = urlParams.get('existingEmail');
-const queryString = location.search
-const urlParams = new URLSearchParams(queryString)
-const existingEmail = urlParams.get('existingEmail')
-const registered = urlParams.get('registered')
-if(existingEmail){
-    loginForm.email.value = existingEmail
-if (existingEmail) {
-  loginForm.email.value = existingEmail
-}
-if(registered){
-    document.querySelector('.registered-alert').style.display = "block";
-if (registered) {
-  document.querySelector('.registered-alert').style.display = 'block'
+.loginContainer {
+    background-color: rgba(0,0,0,.75);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 68px;
+    padding-right: 68px;
+    border-radius: 4px;
+    width: 450px;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 68px;
+  padding-right: 68px;
+  border-radius: 4px;
+  width: 450px;
 }
 
-loginForm.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    console.log(loginForm);
-    let payload = {
-        email: loginForm.email.value,
-        password: loginForm.password.value
-    }
-    fetch(apiUrl + "/login", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    .then((response)=>{
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error("something went wrong");
-        }
-loginForm.addEventListener('submit', e => {
-  e.preventDefault()
-  console.log(loginForm)
-  let payload = {
-    email: loginForm.email.value,
-    password: loginForm.password.value,
-  }
-  fetch(apiUrl + '/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw new Error('something went wrong')
-      }
-    }) // returns a promise already
-    .then((response)=>{
-        localStorage.setItem('token', response.token)
-        location.href = "/";
-    .then(response => {
-      localStorage.setItem('token', response.token)
-      location.href = '/'
-    })
-})
-})
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.background-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logingContainer-main button {
+    background-color: #e50914;
+}
+  background-color: #e50914;
+}
